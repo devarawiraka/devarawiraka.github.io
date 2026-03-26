@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
     :root {
       --white: #ffffff;
       --off: #f7f6f4;
@@ -220,13 +220,12 @@
     .video-embed { position: relative; padding-bottom: 56.25%; height: 0; background: var(--ink); }
     .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     .video-meta { padding: 1rem 1.25rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
-    .video-meta-left {}
+
     .video-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
     .video-desc { font-size: 0.8rem; color: var(--ink3); }
     .video-type { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink2); border: 1px solid var(--line2); padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
     #contact { background: var(--white); }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-    .contact-left {}
     .contact-tagline { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 1.5rem; color: var(--ink); }
     .contact-tagline strong { font-weight: 600; }
     .contact-desc { font-size: 1rem; color: var(--ink2); line-height: 1.8; margin-bottom: 3rem; max-width: 400px; }
@@ -335,18 +334,19 @@
       </div>
       <div class="section-line"></div>
     </div>
-    <div class="about-cols reveal">
-      <div class="about-photo-box">
-        <div class="about-photo-frame">
-          <!-- Ganti dengan: <img src="URL_FOTOMU" alt="Foto profil"> -->
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="6" stroke="#a8a5a0" stroke-width="1.5"/><path d="M4 32c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#a8a5a0" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span>Foto profil</span>
-          <div class="photo-label">
-            <span>Devara Wiraka</span>
-            <span>Graphic Designer</span>
-          </div>
-        </div>
+  <div class="about-cols reveal">
+  <div class="about-photo-box">
+    <div class="about-photo-frame">
+
+      <img src="foto-profil.png" alt="Foto profil Devara Wiraka">
+
+      <div class="photo-label">
+        <span>Devara Wiraka</span>
+        <span>Graphic Designer</span>
       </div>
+
+    </div>
+  </div>
       <div class="about-text-col">
         <p class="about-bio">
           Saya adalah seorang desainer grafis berbasis di <strong>Jakarta, Indonesia</strong> yang berfokus pada branding, social media design, dan produksi konten visual. Saya percaya desain yang baik lahir dari pemahaman mendalam tentang tujuan, audiens, dan pesan bukan sekadar tampilan.
@@ -397,17 +397,14 @@
       <div class="port-item large" data-cat="branding">
         <div class="port-thumb">
           <!-- Ganti dengan: <img src="URL_GAMBAR" alt="Nama Proyek"> -->
-          <div class="port-thumb-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
-            <span>Gambar Proyek</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-tag">Branding</div>
-          <div class="port-title">Brand Identity — Nama Klien</div>
-          <div class="port-year">2024</div>
-        </div>
-      </div>
+        <img src="Visual-Branding.png" alt="Brand Identity Project">
+    </div>
+    <div class="port-info">
+        <div class="port-tag">Branding</div>
+        <div class="port-title">Brand Identity — Nama Klien</div>
+        <div class="port-year">2024</div>
+    </div>
+    </div>
 
       <!-- Item 2 -->
       <div class="port-item" data-cat="digital">
@@ -428,46 +425,41 @@
       <div class="port-item" data-cat="print">
         <div class="port-thumb">
           <div class="port-thumb-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Gambar Proyek</span>
+    <img src="Poster-Design.png" alt="Poster Design">
           </div>
         </div>
         <div class="port-info">
           <div class="port-tag">Print</div>
-          <div class="port-title">Poster Series Event</div>
-          <div class="port-year">2023</div>
+          <div class="port-title">Poster Design</div>
+          <div class="port-year">2025-2026</div>
         </div>
       </div>
 
-      <!-- Item 4 -->
+      <!-- Item 4 SOSIAL MEDIA -->
       <div class="port-item" data-cat="content">
         <div class="port-thumb">
           <div class="port-thumb-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Gambar Proyek</span>
+    <img src="Social-Media.png" alt="Logo & Visual System Project">
           </div>
         </div>
         <div class="port-info">
           <div class="port-tag">Content</div>
-          <div class="port-title">Social Media Pack</div>
-          <div class="port-year">2024</div>
+          <div class="port-title">Social Media Design</div>
+          <div class="port-year">2025-2026</div>
         </div>
       </div>
 
       <!-- Item 5 -->
-      <div class="port-item" data-cat="branding">
-        <div class="port-thumb">
-          <div class="port-thumb-placeholder">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Gambar Proyek</span>
-          </div>
-        </div>
-        <div class="port-info">
-          <div class="port-tag">Branding</div>
-          <div class="port-title">Logo &amp; Visual System</div>
-          <div class="port-year">2023</div>
-        </div>
-      </div>
+     <div class="port-item" data-cat="branding">
+  <div class="port-thumb">
+    <img src="Logo-Design.png" alt="Logo & Visual System Project">
+  </div>
+  <div class="port-info">
+    <div class="port-tag">Branding</div>
+    <div class="port-title">Logo Design</div>
+    <div class="port-year">2025-2026</div>
+  </div>
+</div>
 
       <!-- Item 6 -->
       <div class="port-item" data-cat="digital">
