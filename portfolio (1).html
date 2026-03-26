@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio — Nama Kamu</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0c0a;
+    --surface: #1a1714;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0ece4;
+    --muted: #8a8278;
+    --accent: #c9a96e;
+    --accent2: #e8c98a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(14,12,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 40%, #2a1f0a 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, #1a1200 0%, transparent 60%),
+                var(--bg);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-tag {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .hero-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; right: 4rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .scroll-hint::before {
+    content: '';
+    display: block;
+    width: 1px; height: 60px;
+    background: var(--border);
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: var(--text);
+  }
+
+  /* ABOUT */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(20%);
+  }
+  .about-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, #2a1f0a 0%, #1a1714 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+  }
+  .about-text { padding-top: 0.5rem; }
+  .about-text p { color: var(--muted); margin-bottom: 1.25rem; }
+  .skills-list {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem;
+  }
+  .skill-tag {
+    padding: 5px 14px;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* PORTFOLIO GRID */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+  }
+  .portfolio-item img,
+  .portfolio-item .img-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  .img-placeholder {
+    background: linear-gradient(135deg, #2a1f0a 0%, #1a1714 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .portfolio-item:hover img,
+  .portfolio-item:hover .img-placeholder { transform: scale(1.04); }
+  .portfolio-info {
+    padding: 1rem 1.25rem 1.25rem;
+    border-top: 0.5px solid var(--border);
+  }
+  .portfolio-info h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--text);
+  }
+  .portfolio-info span {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .portfolio-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 0.5px solid rgba(201,169,110,0.3);
+    padding: 2px 8px;
+    margin-top: 6px;
+  }
+
+  /* VIDEO */
+  #video { background: var(--surface); }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .video-wrap {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+  }
+  .video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+  }
+  .video-embed iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-caption {
+    padding: 0.85rem 1rem;
+    border-top: 0.5px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-info p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-group input,
+  .form-group textarea {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    color: var(--text);
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--accent); }
+  .form-group textarea { min-height: 120px; }
+  .btn-submit {
+    padding: 0.9rem 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { background: var(--accent2); }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .scroll-hint { display: none; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Nama Kamu</a>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#portfolio">Desain</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Desainer & Kreator Visual</p>
+    <h1 class="hero-name">Nama<br><em>Kamu</em></h1>
+    <p class="hero-desc">
+      Saya membuat desain yang bercerita — dari brand identity hingga konten digital yang berkesan.
+      <!-- Ganti deskripsi ini dengan kalimat tentang dirimu -->
+    </p>
+    <a href="#portfolio" class="hero-cta">Lihat Karya ↓</a>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Tentang Saya</p>
+  <div class="about-grid">
+    <div>
+      <!-- Ganti src dengan URL foto kamu dari imgbb.com atau Google Drive -->
+      <!-- <img src="URL_FOTO_KAMU" alt="Foto Profil" class="about-photo"> -->
+      <div class="about-photo-placeholder">Foto Profil</div>
+    </div>
+    <div class="about-text">
+      <h2 class="section-title">Halo, saya<br>Nama Kamu</h2>
+      <p>
+        Saya adalah seorang desainer grafis berbasis di [Kota Kamu] dengan pengalaman di bidang branding, 
+        desain digital, dan pembuatan konten visual. Saya percaya bahwa desain yang baik bukan hanya soal 
+        estetika, tapi juga soal komunikasi yang efektif.
+      </p>
+      <p>
+        Saat ini saya terbuka untuk proyek freelance maupun kolaborasi kreatif.
+        <!-- Ubah teks ini sesuai dengan perjalanan dan keahlian kamu -->
+      </p>
+      <div class="skills-list">
+        <span class="skill-tag">Branding</span>
+        <span class="skill-tag">Illustrasi</span>
+        <span class="skill-tag">UI/UX</span>
+        <span class="skill-tag">Motion Design</span>
+        <span class="skill-tag">Social Media</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Adobe Suite</span>
+        <!-- Tambah atau hapus skill tag sesuai keahlianmu -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO DESAIN -->
+<section id="portfolio">
+  <p class="section-label">Karya Desain</p>
+  <h2 class="section-title">Portofolio</h2>
+  <div class="portfolio-grid">
+
+    <!-- ITEM 1 — Ganti src dengan URL gambar dari imgbb.com -->
+    <div class="portfolio-item">
+      <div class="img-placeholder">Gambar Proyek 1</div>
+      <!-- <img src="URL_GAMBAR_1" alt="Proyek Branding"> -->
+      <div class="portfolio-info">
+        <h3>Nama Proyek 1</h3>
+        <span>Brand Identity · 2024</span><br>
+        <span class="portfolio-tag">Branding</span>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="portfolio-item">
+      <div class="img-placeholder">Gambar Proyek 2</div>
+      <div class="portfolio-info">
+        <h3>Nama Proyek 2</h3>
+        <span>Desain Poster · 2024</span><br>
+        <span class="portfolio-tag">Print</span>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="portfolio-item">
+      <div class="img-placeholder">Gambar Proyek 3</div>
+      <div class="portfolio-info">
+        <h3>Nama Proyek 3</h3>
+        <span>UI Design · 2023</span><br>
+        <span class="portfolio-tag">Digital</span>
+      </div>
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="portfolio-item">
+      <div class="img-placeholder">Gambar Proyek 4</div>
+      <div class="portfolio-info">
+        <h3>Nama Proyek 4</h3>
+        <span>Social Media Content · 2024</span><br>
+        <span class="portfolio-tag">Content</span>
+      </div>
+    </div>
+
+    <!-- Salin blok di atas untuk tambah lebih banyak karya -->
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <p class="section-label">Karya Video</p>
+  <h2 class="section-title">Showreel</h2>
+  <div class="video-grid">
+
+    <!-- VIDEO 1 — Ganti src YouTube embed -->
+    <div class="video-wrap">
+      <div class="video-embed">
+        <!-- Ganti dengan link embed YouTube kamu -->
+        <!-- Format: https://www.youtube.com/embed/VIDEO_ID -->
+        <iframe 
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+          title="Video 1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-caption">Judul Video 1 — Deskripsi singkat</p>
+    </div>
+
+    <!-- VIDEO 2 -->
+    <div class="video-wrap">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+          title="Video 2"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-caption">Judul Video 2 — Deskripsi singkat</p>
+    </div>
+
+    <!-- Tambah lebih banyak video dengan menyalin blok di atas -->
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="contact">
+  <p class="section-label">Hubungi Saya</p>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h2 class="section-title">Mari<br>Berkolaborasi</h2>
+      <p>Punya proyek menarik? Saya terbuka untuk diskusi, baik itu proyek freelance, kolaborasi, atau sekadar ngobrol soal desain.</p>
+      <div class="contact-links">
+        <!-- Ganti dengan info kontak kamu -->
+        <a href="mailto:emailkamu@gmail.com" class="contact-link">
+          <span class="contact-link-dot"></span>
+          emailkamu@gmail.com
+        </a>
+        <a href="https://instagram.com/username_kamu" class="contact-link" target="_blank" rel="noopener">
+          <span class="contact-link-dot"></span>
+          @username_kamu (Instagram)
+        </a>
+        <a href="https://linkedin.com/in/namakamu" class="contact-link" target="_blank" rel="noopener">
+          <span class="contact-link-dot"></span>
+          LinkedIn
+        </a>
+        <a href="https://wa.me/628xxxxxxxxxx" class="contact-link" target="_blank" rel="noopener">
+          <span class="contact-link-dot"></span>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Form Kontak via Formspree — Daftar di formspree.io dan ganti ACTION -->
+    <form class="contact-form" action="https://formspree.io/f/GANTI_DENGAN_ID_FORMSPREE" method="POST">
+      <div class="form-group">
+        <label for="name">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Nama kamu" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="email@kamu.com" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" placeholder="Ceritakan proyekmu..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Kirim Pesan →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Nama Kamu. All rights reserved.</p>
+  <p>Made with ♥ — Hosted on GitHub Pages</p>
+</footer>
+
+</body>
+</html>
