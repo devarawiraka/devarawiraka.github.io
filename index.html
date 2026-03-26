@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — devara_wiraka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off: #f7f6f4;
+    --line: #e8e6e2;
+    --line2: #d4d0ca;
+    --ink: #1a1916;
+    --ink2: #6b6860;
+    --ink3: #a8a5a0;
+    --accent: #1a1916;
+    --radius: 4px;
+    --max: 1160px;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLL ANIMATION ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: var(--ink3); font-weight: 300; }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--ink2);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink) !important;
+    border: 1px solid var(--line2);
+    padding: 7px 18px;
+    border-radius: var(--radius);
+    transition: background 0.2s, border-color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--ink) !important; color: var(--white) !important; border-color: var(--ink) !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.35;
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--line2);
+  }
+  .hero-heading {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-heading strong {
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+  }
+  .hero-heading strong::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 0; right: 0;
+    height: 3px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineGrow 0.6s 0.9s ease forwards;
+  }
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--ink2);
+    max-width: 460px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--ink);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 13px 28px;
+    border-radius: var(--radius);
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { opacity: 0.82; transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--ink2);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn-ghost svg { transition: transform 0.2s; }
+  .btn-ghost:hover svg { transform: translateX(3px); }
+  .hero-stats {
+    position: absolute;
+    right: 2.5rem; bottom: 3rem;
+    display: flex; gap: 3rem;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--ink3);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--off);
+    border-bottom: 1px solid var(--line);
+  }
+  .section-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--ink3);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .section-title strong { font-weight: 600; }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    margin-bottom: 6px;
+  }
+  .about-cols {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-photo-box {
+    position: relative;
+  }
+  .about-photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--line);
+    border: 1px solid var(--line2);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--ink3);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    position: relative;
+  }
+  .about-photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    position: absolute; inset: 0;
+  }
+  .photo-label {
+    position: absolute;
+    bottom: -1px; left: -1px; right: -1px;
+    background: var(--white);
+    border: 1px solid var(--line2);
+    padding: 10px 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .about-text-col { padding-top: 0.25rem; }
+  .about-bio {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink2);
+    margin-bottom: 2rem;
+  }
+  .about-bio strong { color: var(--ink); font-weight: 500; }
+  .skills-heading {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+  .skills-grid {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .skill {
+    padding: 6px 14px;
+    border: 1px solid var(--line2);
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--ink2);
+    background: var(--white);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* ─── PORTFOLIO ─── */
+  #portfolio {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+  }
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border: 1px solid var(--line2);
+    background: none;
+    border-radius: var(--radius);
+    font-size: 0.82rem;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink2);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--ink);
+    color: var(--white);
+    border-color: var(--ink);
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .port-item {
+    background: var(--white);
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .port-item:hover { background: var(--off); }
+  .port-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--off);
+    overflow: hidden;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .port-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .port-item:hover .port-thumb img { transform: scale(1.04); }
+  .port-thumb-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--ink3);
+  }
+  .port-thumb-placeholder svg { opacity: 0.3; }
+  .port-thumb-placeholder span { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .port-overlay {
+    position: absolute; inset: 0;
+    background: rgba(26,25,22,0);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s;
+  }
+  .port-item:hover .port-overlay { background: rgba(26,25,22,0.04); }
+  .port-info {
+    padding: 1.25rem 1.25rem 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .port-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 5px;
+  }
+  .port-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .port-year { font-size: 0.8rem; color: var(--ink3); }
+
+  /* ─── BESAR ─── */
+  .port-item.large {
+    grid-column: span 2;
+  }
+  .port-item.large .port-thumb { aspect-ratio: 16/9; }
+
+  /* ─── VIDEO ─── */
+  #video {
+    background: var(--off);
+    border-bottom: 1px solid var(--line);
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .video-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  .video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: var(--ink);
+  }
+  .video-embed iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-meta {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .video-title { font-size: 0.9rem; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .video-desc { font-size: 0.8rem; color: var(--ink3); }
+  .video-type {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink2);
+    border: 1px solid var(--line2);
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--white);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .contact-tagline {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+  .contact-tagline strong { font-weight: 600; }
+  .contact-desc {
+    font-size: 1rem;
+    color: var(--ink2);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    max-width: 400px;
+  }
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .contact-list li {
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-list a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 0;
+    text-decoration: none;
+    color: var(--ink2);
+    font-size: 0.92rem;
+    transition: color 0.2s, padding-left 0.2s;
+    gap: 1rem;
+  }
+  .contact-list a:hover { color: var(--ink); padding-left: 8px; }
+  .contact-list-icon {
+    width: 28px; height: 28px;
+    border: 1px solid var(--line2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--ink3);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-list a:hover .contact-list-icon { border-color: var(--ink); color: var(--ink); }
+  .contact-list-label { flex: 1; font-weight: 400; }
+  .contact-list-val { color: var(--ink3); font-size: 0.82rem; }
+
+  /* form */
+  .contact-form { display: flex; flex-direction: column; gap: 0; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .form-field {
+    position: relative;
+    border: 1px solid var(--line);
+    margin: -1px 0 0 -1px;
+  }
+  .form-field:first-child { margin-top: 0; }
+  .form-field label {
+    position: absolute;
+    top: 12px; left: 16px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    pointer-events: none;
+    transition: all 0.2s;
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--ink);
+    padding: 34px 16px 14px;
+    resize: none;
+  }
+  .form-field textarea { min-height: 130px; }
+  .form-field:focus-within {
+    border-color: var(--ink);
+    z-index: 1;
+  }
+  .form-field:focus-within label { color: var(--ink); }
+  .form-submit {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .form-note { font-size: 0.8rem; color: var(--ink3); }
+  .btn-send {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--ink);
+    color: var(--white);
+    border: none;
+    padding: 13px 28px;
+    border-radius: var(--radius);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-send:hover { opacity: 0.82; transform: translateY(-1px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--line);
+    background: var(--off);
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .footer-brand {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .footer-copy { font-size: 0.78rem; color: var(--ink3); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--ink3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--ink); }
+
+  /* ─── KEYFRAMES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    to { transform: scaleX(1); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero-stats { position: static; display: flex; gap: 2rem; margin-top: 3rem; }
+    .hero-inner { padding: 4rem 1.5rem; }
+    .section-inner { padding: 4rem 1.5rem; }
+    .about-cols { grid-template-columns: 1fr; gap: 2.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .port-item.large { grid-column: span 2; }
+    .video-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+  @media (max-width: 600px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .port-item.large { grid-column: span 1; }
+    .port-item.large .port-thumb { aspect-ratio: 4/3; }
+    .hero-heading { font-size: 2.4rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .nav-inner { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Devara Wiraka <span>/ Portofolio</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#portfolio">Desain</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#contact" class="nav-cta">Hubungi</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Desainer Grafis &amp; Kreator Visual</div>
+    <h1 class="hero-heading">
+      Menyampaikan Pesan<br><strong>Positif</strong>,<br>lewat visual yang<br><strong>Efektif.</strong></h1>
+    <p class="hero-sub">
+     Saya membantu brand atau individu mengubah ide menjadi visual yang mampu menyampaikan cerita secara Efektif.
+    </p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">
+        Lihat Portofolio
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" class="btn-ghost">
+        Hubungi saya
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Proyek selesai</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3 th</div>
+        <div class="stat-label">Pengalaman</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Klien puas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <div>
+        <div class="section-num">01 — Tentang</div>
+        <h2 class="section-title">Halo, saya<br><strong>Devara Wiraka</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-cols reveal">
+      <div class="about-photo-box">
+        <div class="about-photo-frame">
+          <!-- Ganti dengan: <img src="URL_FOTOMU" alt="Foto profil"> -->
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="6" stroke="#a8a5a0" stroke-width="1.5"/><path d="M4 32c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#a8a5a0" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Foto profil</span>
+          <div class="photo-label">
+            <span>Devara Wiraka</span>
+            <span>Graphic Designer</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text-col">
+        <p class="about-bio">
+          Saya adalah seorang desainer grafis berbasis di <strong>Jakarta, Indonesia</strong> yang berfokus pada branding, social media design, dan produksi konten visual. Saya percaya desain yang baik lahir dari pemahaman mendalam tentang tujuan, audiens, dan pesan bukan sekadar tampilan.
+        </p>
+        <p class="about-bio">
+          Dengan pengalaman lebih dari <strong>3 tahun</strong>, saya telah membantu berbagai klien dari individu, umkm hingga organisasi nasional untuk membangun identitas visual yang kuat dan konsisten.
+        </p>
+        <p class="about-bio">
+          Saat ini terbuka untuk proyek <strong>freelance</strong>, kolaborasi kreatif, dan kesempatan kerja penuh waktu.
+        </p>
+        <p class="skills-heading">Keahlian</p>
+        <div class="skills-grid">
+          <span class="skill">Brand Identity</span>
+          <span class="skill">UI / UX Design</span>
+          <span class="skill">Motion Graphics</span>
+          <span class="skill">Social Media</span>
+          <span class="skill">Figma</span>
+          <span class="skill">Adobe Illustrator</span>
+          <span class="skill">Photoshop</span>
+          <span class="skill">After Effects</span>
+          <span class="skill">Canva</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">02 — Karya Desain</div>
+        <h2 class="section-title">Portofolio<br><strong>Pilihan</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterPortfolio('all', this)">Semua</button>
+      <button class="filter-btn" onclick="filterPortfolio('branding', this)">Branding</button>
+      <button class="filter-btn" onclick="filterPortfolio('digital', this)">Digital</button>
+      <button class="filter-btn" onclick="filterPortfolio('print', this)">Print</button>
+      <button class="filter-btn" onclick="filterPortfolio('content', this)">Content</button>
+    </div>
+    <div class="portfolio-grid reveal" id="portfolioGrid">
+
+      <!-- Item 1 — BESAR -->
+      <div class="port-item large" data-cat="branding">
+        <div class="port-thumb">
+          <!-- Ganti dengan: <img src="URL_GAMBAR" alt="Nama Proyek"> -->
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Branding</div>
+          <div class="port-title">Brand Identity — Nama Klien</div>
+          <div class="port-year">2024</div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="port-item" data-cat="digital">
+        <div class="port-thumb">
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">UI Design</div>
+          <div class="port-title">Desain Aplikasi Mobile</div>
+          <div class="port-year">2024</div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="port-item" data-cat="print">
+        <div class="port-thumb">
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Print</div>
+          <div class="port-title">Poster Series Event</div>
+          <div class="port-year">2023</div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="port-item" data-cat="content">
+        <div class="port-thumb">
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Content</div>
+          <div class="port-title">Social Media Pack</div>
+          <div class="port-year">2024</div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="port-item" data-cat="branding">
+        <div class="port-thumb">
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Branding</div>
+          <div class="port-title">Logo &amp; Visual System</div>
+          <div class="port-year">2023</div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="port-item" data-cat="digital">
+        <div class="port-thumb">
+          <div class="port-thumb-placeholder">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 20l6-6 5 5 4-4 9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Gambar Proyek</span>
+          </div>
+        </div>
+        <div class="port-info">
+          <div class="port-tag">Digital</div>
+          <div class="port-title">Landing Page Desain</div>
+          <div class="port-year">2024</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">03 — Video</div>
+        <h2 class="section-title">Karya<br><strong>Video</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="video-grid reveal">
+
+      <!-- VIDEO 1 — Ganti VIDEO_ID dengan ID YouTube kamu -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/lCP2FPgQZlg"
+            title="Video Editing"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-meta">
+          <div class="video-meta-left">
+            <div class="video-title">Campaign Video - Muti Rivaldo SIF UPJ</div>
+            <div class="video-desc">Video Kampanye pemilihan HIMA</div>
+          </div>
+          <span class="video-type">Video Editing</span>
+        </div>
+      </div>
+
+      <!-- VIDEO 2 -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/a0VvsmmbDRo"
+            title="Video Editing"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-meta">
+          <div class="video-meta-left">
+            <div class="video-title">campaign video — Jurnal Nadi MHTL Undip</div>
+            <div class="video-desc">Video Kampanye pemilihan HIMA</div>
+          </div>
+          <span class="video-type">Video Editing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">04 — Kontak</div>
+        <h2 class="section-title">Mari<br><strong>Bekerja Sama</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-left">
+        <p class="contact-desc">
+          Punya proyek menarik? Saya terbuka untuk diskusi, kolaborasi kreatif, maupun proyek freelance. Jangan ragu menghubungi saya.
+        </p>
+        <ul class="contact-list">
+          <li>
+            <a href="mailto:devaraalvaritsi26@gmai.com">
+              <span class="contact-list-icon">@</span>
+              <span class="contact-list-label">Email</span>
+              <span class="contact-list-val">devaraalvaritsi26@gmai.com</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/6285171070433" target="_blank" rel="noopener">
+              <span class="contact-list-icon">W</span>
+              <span class="contact-list-label">WhatsApp</span>
+              <span class="contact-list-val">+62 85171070433</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/devara_wiraka" target="_blank" rel="noopener">
+              <span class="contact-list-icon">IG</span>
+              <span class="contact-list-label">Instagram</span>
+              <span class="contact-list-val">@devara_wiraka</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/devaraalfaritziwiraka" target="_blank" rel="noopener">
+              <span class="contact-list-icon">in</span>
+              <span class="contact-list-label">LinkedIn</span>
+              <span class="contact-list-val">devara_wiraka</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <!-- Ganti action formspree dengan ID kamu dari formspree.io -->
+        <form class="contact-form" action="https://formspree.io/f/mjgpvaae" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">Nama</label>
+              <input type="text" id="fname" name="name" placeholder="Nama lengkap" required>
+            </div>
+            <div class="form-field">
+              <label for="femail">Email</label>
+              <input type="email" id="femail" name="email" placeholder="email@kamu.com" required>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="fsubject">Topik</label>
+            <input type="text" id="fsubject" name="subject" placeholder="Tentang apa?">
+          </div>
+          <div class="form-field">
+            <label for="fmsg">Pesan</label>
+            <textarea id="fmsg" name="message" placeholder="Ceritakan proyekmu…" required></textarea>
+          </div>
+          <div class="form-submit">
+            <span class="form-note">Biasanya saya balas dalam 1–2 hari kerja.</span>
+            <button type="submit" class="btn-send">
+              Kirim Pesan
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-brand">devara_wiraka</a>
+    <p class="footer-copy">©devara_wiraka 2026 — Hosted on GitHub Pages</p>
+    <ul class="footer-links">
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#portfolio">Desain</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Portfolio filter
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.port-item').forEach(item => {
+      const match = cat === 'all' || item.dataset.cat === cat;
+      item.style.display = match ? 'block' : 'none';
+    });
+  }
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#1a1916' : '';
+    });
+  });
+</script>
+</body>
+</html>
