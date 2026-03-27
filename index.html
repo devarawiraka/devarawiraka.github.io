@@ -655,7 +655,291 @@
     </div>
   </div>
 </section>
-
+<!-- SOCIAL MEDIA PORTFOLIO -->
+<section id="social">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">04 — Konten Sosial Media</div>
+        <h2 class="section-title">Short Form<br><strong>Content</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+ 
+    <!-- TABS -->
+    <div class="social-tabs reveal">
+      <button class="social-tab-btn active" onclick="switchTab('all', this)">
+        <span class="tab-dot tab-dot-all"></span> Semua
+      </button>
+      <button class="social-tab-btn" onclick="switchTab('tiktok', this)">
+        <span class="tab-dot tab-dot-tiktok"></span> TikTok
+      </button>
+      <button class="social-tab-btn" onclick="switchTab('reels', this)">
+        <span class="tab-dot tab-dot-reels"></span> Reels
+      </button>
+    </div>
+ 
+    <!-- TAB: SEMUA -->
+    <div class="social-panel active reveal" id="panel-all">
+      <div class="reel-slider-wrap">
+        <div class="reel-slider" id="slider-all">
+ 
+          <!-- ─ CARD 1 — TikTok ─ -->
+          <!-- CARA EMBED TIKTOK:
+               1. Buka video TikTok di browser
+               2. Klik Share → Embed → Copy Code
+               3. Tempel iframe-nya di dalam .reel-embed di bawah
+               4. Hapus div.reel-placeholder, ganti dengan iframe tersebut -->
+          <div class="reel-card" data-src="tiktok">
+            <div class="reel-embed">
+              <!-- Ganti blok ini dengan iframe embed TikTok kamu -->
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>TikTok Video 1</span>
+              </div>
+              <!-- CONTOH (hapus komentar ini dan ganti placeholder):
+              <iframe src="https://www.tiktok.com/embed/v2/TIKTOK_VIDEO_ID"
+                allowfullscreen allow="encrypted-media"></iframe>
+              -->
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 1</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#010101"></span>TikTok
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 2 — Reels ─ -->
+          <!-- CARA EMBED REELS INSTAGRAM:
+               1. Buka Reels di Instagram web
+               2. Klik ··· → Embed → Copy Embed Code
+               3. Dari kode embed, ambil bagian src dari <iframe>
+               4. Tempel di bawah, hapus placeholder -->
+          <div class="reel-card" data-src="reels">
+            <div class="reel-embed">
+              <!-- Ganti blok ini dengan iframe embed Instagram Reels kamu -->
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>Reels 1</span>
+              </div>
+              <!-- CONTOH (hapus komentar ini dan ganti placeholder):
+              <iframe src="https://www.instagram.com/reel/REEL_ID/embed"
+                allowfullscreen></iframe>
+              -->
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 2</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#e1306c"></span>Reels
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 3 — TikTok ─ -->
+          <div class="reel-card" data-src="tiktok">
+            <div class="reel-embed">
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>TikTok Video 2</span>
+              </div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 3</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#010101"></span>TikTok
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 4 — Reels ─ -->
+          <div class="reel-card" data-src="reels">
+            <div class="reel-embed">
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>Reels 2</span>
+              </div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 4</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#e1306c"></span>Reels
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 5 — TikTok ─ -->
+          <div class="reel-card" data-src="tiktok">
+            <div class="reel-embed">
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>TikTok Video 3</span>
+              </div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 5</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#010101"></span>TikTok
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 6 — Reels ─ -->
+          <div class="reel-card" data-src="reels">
+            <div class="reel-embed">
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>Reels 3</span>
+              </div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 6</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#e1306c"></span>Reels
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- ─ CARD 7 — TikTok ─ -->
+          <div class="reel-card" data-src="tiktok">
+            <div class="reel-embed">
+              <div class="reel-placeholder">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M11 8.5v11l9-5.5-9-5.5z" fill="currentColor"/></svg>
+                <span>TikTok Video 4</span>
+              </div>
+            </div>
+            <div class="reel-meta">
+              <div class="reel-meta-left">
+                <div class="reel-title">Judul Konten 7</div>
+                <div class="reel-source">
+                  <span class="reel-source-dot" style="background:#010101"></span>TikTok
+                </div>
+              </div>
+            </div>
+          </div>
+ 
+        </div><!-- end reel-slider -->
+ 
+        <!-- Navigasi slider -->
+        <div class="slider-nav">
+          <div class="slider-dots" id="dots-all"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <span class="slider-count" id="count-all">1 / 7</span>
+            <div class="slider-arrows">
+              <button class="slider-arrow" onclick="slideMove('slider-all','dots-all','count-all',-1)" aria-label="Prev">&#8592;</button>
+              <button class="slider-arrow" onclick="slideMove('slider-all','dots-all','count-all',1)" aria-label="Next">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end panel-all -->
+ 
+    <!-- TAB: TIKTOK -->
+    <div class="social-panel" id="panel-tiktok">
+      <div class="reel-slider-wrap">
+        <div class="reel-slider" id="slider-tiktok">
+          <!-- Kartu TikTok otomatis diisi oleh JS dari panel-all -->
+        </div>
+        <div class="slider-nav">
+          <div class="slider-dots" id="dots-tiktok"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <span class="slider-count" id="count-tiktok">1 / 4</span>
+            <div class="slider-arrows">
+              <button class="slider-arrow" onclick="slideMove('slider-tiktok','dots-tiktok','count-tiktok',-1)">&#8592;</button>
+              <button class="slider-arrow" onclick="slideMove('slider-tiktok','dots-tiktok','count-tiktok',1)">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- TAB: REELS -->
+    <div class="social-panel" id="panel-reels">
+      <div class="reel-slider-wrap">
+        <div class="reel-slider" id="slider-reels">
+          <!-- Kartu Reels otomatis diisi oleh JS dari panel-all -->
+        </div>
+        <div class="slider-nav">
+          <div class="slider-dots" id="dots-reels"></div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <span class="slider-count" id="count-reels">1 / 3</span>
+            <div class="slider-arrows">
+              <button class="slider-arrow" onclick="slideMove('slider-reels','dots-reels','count-reels',-1)">&#8592;</button>
+              <button class="slider-arrow" onclick="slideMove('slider-reels','dots-reels','count-reels',1)">&#8594;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- VIDEO -->
+<section id="video">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">05 — Video</div>
+        <h2 class="section-title">Karya<br><strong>Video</strong></h2>
+      </div>
+      <div class="section-line"></div>
+    </div>
+    <div class="video-grid reveal">
+ 
+      <!-- VIDEO 1 — Ganti VIDEO_ID dengan ID YouTube kamu -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/lCP2FPgQZlg"
+            title="Video Editing"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-meta">
+          <div class="video-meta-left">
+            <div class="video-title">Campaign Video - Muti Rivaldo SIF UPJ</div>
+            <div class="video-desc">Video Kampanye pemilihan HIMA</div>
+          </div>
+          <span class="video-type">Video Editing</span>
+        </div>
+      </div>
+ 
+      <!-- VIDEO 2 -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/a0VvsmmbDRo"
+            title="Video Editing"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-meta">
+          <div class="video-meta-left">
+            <div class="video-title">campaign video — Jurnal Nadi MHTL Undip</div>
+            <div class="video-desc">Video Kampanye pemilihan HIMA</div>
+          </div>
+          <span class="video-type">Video Editing</span>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</section>
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
