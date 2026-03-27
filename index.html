@@ -264,15 +264,40 @@
     @media (max-width: 600px) { .portfolio-grid { grid-template-columns: 1fr; } .port-item.large { grid-column: span 1; } .port-item.large .port-thumb { aspect-ratio: 4/3; } .hero-heading { font-size: 2.4rem; } .hero-actions { flex-direction: column; align-items: flex-start; gap: 1rem; } .nav-inner { padding: 0 1.25rem; } }
 
     /* ─── BEHANCE PROFILE CARD ─── */
-    #behance { background: var(--off); border-bottom: 1px solid var(--line); }
-    .behance-card {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 2.5rem; flex-wrap: wrap;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 2rem 2.5rem;
-      max-width: 680px;
+.behance-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+
+  background: url('assets/behance-bg.jpg') center/cover no-repeat;
+
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  max-width: 680px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.behance-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  background: rgba(0, 0, 0, 0.45);
+
+  z-index: 0;
+}
+
+.behance-card > * {
+  position: relative;
+  z-index: 1;
+}
     }
     .behance-card-left { display: flex; align-items: center; gap: 1.25rem; }
     .behance-avatar {
