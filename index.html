@@ -265,38 +265,13 @@
 
     /* ─── BEHANCE PROFILE CARD ─── */
 .behance-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-
-  background: url('Behance_ss.png') center/cover no-repeat;
-
-  border-radius: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2.5rem; flex-wrap: wrap;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
   padding: 2rem 2.5rem;
   max-width: 680px;
-
-  position: relative;
-  overflow: hidden;
-}
-
-.behance-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  background: rgba(0, 0, 0, 0.45);
-
-  z-index: 0;
-}
-
-.behance-card > * {
-  position: relative;
-  z-index: 1;
 }
     }
     .behance-card-left { display: flex; align-items: center; gap: 1.25rem; }
